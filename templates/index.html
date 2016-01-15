@@ -2,6 +2,7 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}Slang Dictionary{% endblock %}
+
 {% block head %}
 {{ super() }}
 <!-- Icon by Freepik from Flaticon -->
@@ -35,6 +36,5 @@
 	<p style="font-size: 30px;">Slang: <span style="color: #e67e22;">{{ word }}</span></p><br>
     <p style="font-size: 30px;">Meaning: <span style="color: #2ecc71;">{{ meaning }}</span></p>
     {% endif %}
-
 </div>
 {% endblock %}
