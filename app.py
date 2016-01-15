@@ -1,12 +1,12 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, flash, url_for
 from flask.ext.bootstrap import Bootstrap
 from flask.ext.wtf import Form
 from wtforms import StringField, SubmitField
 from wtforms.validators import Required
 from flask.ext.sqlalchemy import SQLAlchemy
-import os
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
+import os
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -39,7 +39,12 @@ class Word(db.Model):
 def index():
 	form = WordForm()
 	if form.validate_on_submit():
-		word = Word.query.filter_by(word=form.word.data).first()
+		word = Word.query.filter_by(word=form.word.data.lower()).first()
+		if word is None:
+			flash('Result not found')
+			return redirect(url_for('index'))
+		else:
+			return render_template('index.html', word=word.meaning, form=form)
 	return render_template('index.html', form=form)
 
 
