@@ -1,1 +1,1 @@
-# Dict-app
+# Slang Dictionary App
