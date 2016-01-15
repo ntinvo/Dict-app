@@ -44,7 +44,7 @@ def index():
 			flash('Result not found')
 			return redirect(url_for('index'))
 		else:
-			return render_template('index.html', word=word.meaning, form=form)
+			return render_template('index.html', meaning=word.meaning, word=word.word, form=form)
 	return render_template('index.html', form=form)
 
 

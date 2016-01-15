@@ -1,12 +1,12 @@
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Dict{% endblock %}
+{% block title %}Slang Dictionary{% endblock %}
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Dict</a>
+            <a class="navbar-brand" href="/">Slang Dict</a>
         </div>
     </div>
 </div>
@@ -27,7 +27,9 @@
     </div>
 
 
-    <p>Meaning: <br> {{ word }}</p>
+	<p style="font-size: 30px;">Slang: <span style="color: #e67e22;">{{ word }}</span></p><br>
+    <p style="font-size: 30px;">Meaning: <span style="color: #2ecc71;">{{ meaning }}</span></p>
+
 
 </div>
 {% endblock %}
