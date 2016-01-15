@@ -26,7 +26,7 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 class WordForm(Form):
-	word = StringField('Enter a word: ', validators=[Required()])
+	word = StringField('Enter a slang: ', validators=[Required()])
 	submit = SubmitField('Look up')
 
 class Word(db.Model):
@@ -38,14 +38,16 @@ class Word(db.Model):
 @app.route('/', methods=['GET', 'POST'])
 def index():
 	form = WordForm()
+	found = False
 	if form.validate_on_submit():
-		word = Word.query.filter_by(word=form.word.data.lower()).first()
+		word = Word.query.filter_by(word=form.word.data.lower().replace(" ", "")).first()
 		if word is None:
-			flash('Result not found')
-			return redirect(url_for('index'))
+			flash('Result not found. Try again!!!')
+			return redirect(url_for('index', found=found))
 		else:
-			return render_template('index.html', meaning=word.meaning, word=word.word, form=form)
-	return render_template('index.html', form=form)
+			found = True
+			return render_template('index.html', meaning=word.meaning, word=word.word, form=form, found=found)
+	return render_template('index.html', form=form, found=found)
 
 
 if __name__ == '__main__':
