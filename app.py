@@ -8,13 +8,10 @@ from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 import os
 
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'this password is so hard to guess'
-
-# DB Config
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 

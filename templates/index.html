@@ -2,6 +2,12 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}Slang Dictionary{% endblock %}
+{% block head %}
+{{ super() }}
+<!-- Icon by Freepik from Flaticon -->
+<link rel="shortcut icon" href="{{ url_for('static', filename='icon.png') }}"> 
+{% endblock %}
+
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
