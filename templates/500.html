@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block title %}Slang Dictionary - Internal Server Error{% endblock %}
+
+{% block content %}
+	<div class="container" style="text-align: center;">
+		<p style="font-size: 50px; font-weight: 1; color: #d35400;">500 Error</p>
+		<hr>
+		<p>Internal Server Error <span class="glyphicon glyphicon-wrench"></span></p>
+
+		<img src="{{ url_for('static', filename='500.jpg') }}">
+
+		<br>
+		<p style="font-size: 20px; font-weight: 50;">Sorry... It's not you. It's us!</p>
+	</div>
+{% endblock %}
