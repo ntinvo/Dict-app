@@ -40,9 +40,11 @@ def index():
 		word = Word.query.filter_by(word=form.word.data.lower().replace(" ", "")).first()
 		if word is None:
 			flash('Result not found. Try again!!!')
+			form.word.data = ''
 			return redirect(url_for('index', found=found))
 		else:
 			found = True
+			form.word.data = ''
 			return render_template('index.html', meaning=word.meaning, word=word.word, form=form, found=found)
 	return render_template('index.html', form=form, found=found)
 
