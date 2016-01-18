@@ -5,6 +5,7 @@
 html {
 	position: relative;
 	min-height: 80%;
+	min-width: 80%;
 }
 
 body {
