@@ -1,3 +1,7 @@
+body {
+	height: 100vh; 
+}
+
 .container {
 	font-family: 'Lato', 'Arial', sans-serif;
 }
